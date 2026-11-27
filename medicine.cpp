@@ -17,8 +17,23 @@
  */
 int addMedicine(Medicine* med)
 {
-    /* 请在这里实现你的代码 */
-    return 0;
+    if (med == NULL) return 0;
+
+    /* 检查编号，避免添加重复药品。 */
+    MedNode* p;
+    for (p = medHead; p != NULL; p = p->next) {
+        if (strcmp(p->data.id, med->id) == 0) return 0;
+    }
+
+    MedNode* node = (MedNode*)malloc(sizeof(MedNode));
+    if (node == NULL) return 0;
+
+    /* 使用头插法保存完整药品信息。 */
+    node->data = *med;
+    node->next = medHead;
+    medHead = node;
+    medCount++;
+    return 1;
 }
 
 /* TODO 第3次课：按编号查找药品
@@ -66,6 +81,17 @@ int deleteMedicine(const char* id)
  */
 void getAllMedicines(Medicine* list, int* count)
 {
-    /* 请在这里实现你的代码 */
-  
+    if (count == NULL) return;
+
+    int capacity = *count;
+    *count = 0;
+    if (list == NULL || capacity <= 0) return;
+
+    /* 最多复制 capacity 条，不改变原链表。 */
+    MedNode* p = medHead;
+    while (p != NULL && *count < capacity) {
+        list[*count] = p->data;
+        (*count)++;
+        p = p->next;
+    }
 }
