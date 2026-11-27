@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build medicine system (EasyX)",
+      "type": "process",
+      "command": "D:/mingw64/bin/g++.exe",
+      "args": [
+        "-std=c++11",
+        "-g",
+        "-static",
+        "-DUNICODE",
+        "-D_UNICODE",
+        "-finput-charset=UTF-8",
+        "-fexec-charset=UTF-8",
+        "-I",
+        "third_party/easyx/include",
+        "main.cpp",
+        "medicine.cpp",
+        "record.cpp",
+        "storage.cpp",
+        "report.cpp",
+        "-o",
+        "medicine_system.exe",
+        "-L",
+        "third_party/easyx/lib",
+        "-leasyxw",
+        "-lgdi32",
+        "-lole32",
+        "-lwinmm"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run medicine system (EasyX)",
+      "type": "process",
+      "command": "${workspaceFolder}/medicine_system.exe",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Build medicine system (EasyX)",
+      "problemMatcher": []
+    }
+  ]
+}

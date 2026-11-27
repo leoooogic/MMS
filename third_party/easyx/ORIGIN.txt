@@ -1,0 +1,12 @@
+EasyX Graphics Library: EasyX_26.10.25
+Official website: https://easyx.cn/
+Package URL: https://easyx.cn/download/EasyX_26.10.25.exe
+Package SHA256: 782923F4AB3ABCDA4AD6E54563D3C9DE8A83955DB04481520E6AD3A48EDDC3B7
+
+The package was extracted with the installed WinRAR.
+The headers are from the package's include directory.
+lib/libeasyxw.a is from lib_mingw_ucrt/x64 (Unicode, UCRT, 64-bit).
+The original package readme is included as readme.txt.
+
+VS Code uses these project-local files through .vscode/tasks.json and
+.vscode/c_cpp_properties.json. The compiler installation is not modified.
