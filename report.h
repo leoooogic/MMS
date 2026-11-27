@@ -5,14 +5,28 @@
 
 #include "common.h"
 
-/* TODO 第1次课：定义 WarningReport 结构体 */
-/* 字段：lowStockCount, nearExpiryCount, expiredCount, warningList */
+/* 库存与有效期预警报表 */
+typedef struct {
+    int lowStockCount;          /* stock < WARN_STOCK 的药品数量 */
+    int nearExpiryCount;        /* 距到期不超过 WARN_MONTH 个月的药品数量 */
+    int expiredCount;           /* 已过期药品数量 */
+    char warningList[2000];     /* 预警详情文本 */
+} WarningReport;
 
-/* TODO 第1次课：定义 StatisticsReport 结构体 */
-/* 字段：totalMedicines, totalRecords, purchaseCount, salesCount */
-/*       totalPurchase, totalSales, profit, profitRate */
+/* 经营统计报表，利润口径按课程任务约定 */
+typedef struct {
+    int totalMedicines;         /* 药品种类总数 */
+    int totalRecords;           /* 单据记录总数 */
+    int purchaseCount;          /* 进货单据数量 */
+    int salesCount;             /* 销售单据数量 */
+    float totalPurchase;        /* 进货总金额 */
+    float totalSales;           /* 销售总金额 */
+    float profit;               /* totalSales - totalPurchase */
+    float profitRate;           /* profit / totalPurchase * 100% */
+} StatisticsReport;
 
-/* TODO 第1次课：声明报表函数 */
-/* getWarningReport, getStatisticsReport, exportReport */
+void getWarningReport(WarningReport *report);        /* 生成库存预警报告 */
+void getStatisticsReport(StatisticsReport *report);  /* 生成经营统计报表 */
+int exportReport(const char *filename);             /* 导出报表到文件 */
 
 #endif /* REPORT_H */

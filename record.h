@@ -5,7 +5,9 @@
 
 #include "common.h"
 
-/* TODO 第1次课：声明业务处理函数 */
-/* purchase, sell, getAllRecords, getRecordsByType */
+int purchase(const char *medId, int qty, float price, Record *outRec); /* 进货入库 */
+int sell(const char *medId, int qty, float price, Record *outRec);     /* 销售出库 */
+void getAllRecords(Record *list, int *count);                        /* 获取所有单据 */
+void getRecordsByType(int type, Record *list, int *count);           /* 按类型获取单据 */
 
 #endif /* RECORD_H */
